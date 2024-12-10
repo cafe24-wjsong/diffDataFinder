@@ -229,18 +229,25 @@ class DatabaseController {
         }
 
         $prompt = "
-            다음 데이터 변경 사항을 간단히 요약해주세요:
+            ## 데이터 변경 사항 요약
+            - 변경사항을 마크다운 형태로 출력하세요.
             
-            New row 데이터의 경우 몇개의 row가 추가되었는지만 출력해주세요
-            ex)
-            table_name
-            - 2개의 새로운 row가 추가되었습니다.
+            ### New row 데이터
+            - 각 테이블에 대해 추가된 row의 수를 다음과 같은 형식으로 출력하세요.
+              - 예시:
+                ```
+                table_name
+                - 2개의 새로운 row가 추가되었습니다.
+                ```
             
-            Change row 데이터의 경우 AS-IS 데이터와 TO-BE 데이터의 차이점을 출력해주세요.
-            ex)
-            table_name.column_name
-            - AS-IS : 1234567890
-            - TO-BE : 9876543210
+            ### Change row 데이터
+            - AS-IS 데이터와 TO-BE 데이터의 차이점을 다음과 같은 형식으로 출력하세요.
+              - 예시:
+                ```
+                table_name.column_name
+                - AS-IS: 1234567890
+                - TO-BE: 9876543210
+                ```
         " . json_encode($results, JSON_PRETTY_PRINT | JSON_UNESCAPED_UNICODE);
 
         $ch = curl_init();
