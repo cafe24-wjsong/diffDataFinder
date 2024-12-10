@@ -6,6 +6,8 @@ const DEFAULT_MALL_ID = 'ectlocal';
 const LIMIT_ROWS = 10000;
 // Diff CSV 파일 경로
 const CSV_PATH = '/tmp/diffDataFinder.csv';
+// 설정 파일 경로
+const YAML_PATH = '';
 // OpenAI API 키
 const OPENAI_API_KEY = '';
 
@@ -411,7 +413,7 @@ class DiffDataFinder {
 $view = new ConsoleView();
 $view->displayBanner();
 
-$yaml_file = '/home/12r/program/resource/yml/data_source.yml';
+$yaml_file = YAML_PATH;
 if (!function_exists('yaml_parse_file')) {
     die("YAML 확장이 설치되어 있지 않습니다. 설치 후 진행해 주세요.\n");
 }
